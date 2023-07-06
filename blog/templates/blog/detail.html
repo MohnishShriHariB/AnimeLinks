@@ -1,0 +1,23 @@
+{% extends 'portfolio_1/pagelayout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {;
+  width: 750px;
+  border: 15px ;
+  margin: auto;
+
+}
+</style>
+</head>
+<body>
+<div align="center">
+<h1 align="center">{{blog.title}}</h1>
+<br>
+<h6 align="right">---{{blog.date|date:'jS F Y f A'}}---</h6>
+<br>
+{{blog.disc|safe}}
+</div>
+{% endblock %}

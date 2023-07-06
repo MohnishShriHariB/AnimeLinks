@@ -1,0 +1,40 @@
+{% extends 'portfolio_1/pagelayout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  padding: 10px;
+}
+
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+</style>
+</head>
+<h1 align="center">Anime Link</h1>
+{% load static %}
+<br>
+<img src="{% static 'portfolio_1\one-piece-zoro-in-wano-arc.jpeg' %}" class="center" height="500" width="750">
+<br>
+<br>
+<div class="grid-container">
+{% for project in projects %}
+<div class="grid-item"><h2 allign="center">{{ project.title }}</h2>
+<p>{{ project.discription }}</p>
+<img src="{{ project.image.url }}" width="300" height="192" align="center">
+{% if project.url1 %}
+<br><a href="{{ project.url1 }}">{{ project.title }} link</a></div>
+{% endif %}
+{% endfor %}
+</div>
+<br>
+{% endblock %}

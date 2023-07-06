@@ -1,0 +1,38 @@
+{% extends 'portfolio_1/pagelayout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  padding: 10px;
+}
+
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+</style>
+</head>
+<h1 align="center">Latest Anime News</h1>
+<h3 align="center">!!!! Today we have {{blogs.count}} anime new{{blogs.count|pluralize}} for you !!!!</h3>
+<br>
+<br>
+<div class="grid-container">
+{% for a in blogs %}
+<div class="grid-item">
+<h1 align="left">#{{a.id}}</h1>
+<h3><a href="{% url 'blog:detail' a.id %}">{{ a.title }}</a></h3>
+{{ a.date|date:'d N Y f A'|upper }}
+<br>
+{{ a.disc|striptags|truncatechars:100 }}
+</div>
+{% endfor %}
+</div>
+{% endblock %}
