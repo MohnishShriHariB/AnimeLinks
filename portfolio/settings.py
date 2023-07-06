@@ -125,3 +125,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL='/midea/'
 MEDIA_ROOT = BASE_DIR /'midea'
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("no local found")
